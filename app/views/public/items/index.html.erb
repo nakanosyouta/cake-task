@@ -1,0 +1,16 @@
+<div>
+  <h1>商品一覧</h1>
+  <% @item.each do |item| %>
+  <p>写真</p>
+  
+  <p>商品名</p>
+   <span><%= item.name %></span>
+   
+  <p>商品説明</p>
+   <span><%= item.introduction %></span>
+   
+  <p>価格</p>
+   <span><%= item.porice %></span>
+   
+  <% end %>
+</div>
