@@ -1,14 +1,20 @@
 <div>
-  <h1>商品詳細</h1>
-  <p>写真</p>
+ 
+ <h1>商品詳細</h1>
+ <p>写真</p>
 
-  <p>商品名</p>
-   <span><%= @item.name %></span>
+ <p>商品名</p>
+  <span><%= @item.name %></span>
 
-  <p>商品説明</p>
-   <span><%= @item.introduction %></span>
+ <p>商品説明</p>
+  <span><%= @item.introduction %></span>
 
-  <p>価格</p>
-   <span><%= @item.porice %></span>
-  <a href="URL">カート</a>
+ <p>価格</p>
+  <span><%= @item.porice %></span>
+  
+ <%= form_with model: @cart_item,url: public_cart_items_path do |f| %>
+  <%= f.select :amouunt, *[1..3] %>
+  <%= f.hidden_field:item_id, :value => @item.id %>
+  <%= f.submit 'カート' %>
+ <% end %>
 </div>

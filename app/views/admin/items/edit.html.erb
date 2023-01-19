@@ -1,7 +1,7 @@
 <div>
   <h1>商品新規登録</h1>
 
-<%= form_with model: @item,url: admin_items_path do |f| %>
+<%= form_with model: @item,url: admin_item_path(@item.id) do |f| %>
     <%= f.radio_button :is_active, 1 %>
     <%= f.radio_button :is_active, 0 %>
     <h4>商品画像</h4>
@@ -13,7 +13,8 @@
     <h4>税抜価格</h4>
      <%= f.text_field :porice %>
 
-    <%= f.submit '新規登録' %>
+    <%= f.submit '変更保存' %>
   <% end %>
 </div>
+
 

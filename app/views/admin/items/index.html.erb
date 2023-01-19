@@ -1,13 +1,16 @@
 <div>
   <h1>商品一覧</h1>
 
-  <% @item.each do |item| %>
+  <% @items.each do |item| %>
 
   <p>商品名</p>
   <span><%= item.name %></span>
 
   <p>税抜価格</p>
   <span>¥<%= item.porice %></span>
+
+  <p>i</p>
+  <span><%= item.is_active %></span>
 
   <% end %>
 

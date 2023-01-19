@@ -2,7 +2,9 @@
   <h1>商品一覧</h1>
   <% @item.each do |item| %>
   <p>写真</p>
-  
+  <%= link_to public_item_path(item.id) do %>
+  <span><%= item.id %></span>
+  <% end %>
   <p>商品名</p>
    <span><%= item.name %></span>
    
