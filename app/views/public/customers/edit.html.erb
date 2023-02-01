@@ -1,0 +1,25 @@
+<idv>
+  <h1>顧客情報編集</h1>
+  <%= form_with model: @customer,url:  customer_path( @customer.id) do |f| %>
+  <p>名前</p>
+  <span><%= f.text_field :last_name %> <%= f.text_field :first_name %></span>
+
+  <p>カナ</p>
+  <span><%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %></span>
+
+  <p>郵便番号</p>
+  <%= f.text_field :postal_code %>
+
+  <p>住所</p>
+  <%= f.text_field :addess %>
+
+  <p>電話番号</p>
+  <%= f.text_field :telephone_number %>
+
+  <p>メールアドレス</p>
+  <%= f.text_field :email %>
+  
+  <span><%= f.submit '変更保存' %></span>
+  <% end %>
+  <%= link_to "退会する", root_path %>
+</idv>

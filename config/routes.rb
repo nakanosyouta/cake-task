@@ -1,35 +1,40 @@
 Rails.application.routes.draw do
 
-
-
   namespace :admin do
 
     resources :customers, only: [:index, :new, :show, :edit, :create, :update]
 
     resources :items, only: [:index, :new, :show, :edit, :create, :update]
+    
+    resources :orders, only: [:new, :index, :show]
   end
 
-  namespace :public do
+  scope module: :public do
+  
+  
+    root to: 'homes#top'
 
-    resources :addresses, only:[:index, :edit]
-  end
-  namespace :public do
-
-    resources :orders, only: [:new,:confirm, :complere, :create,:index, :show]
-  end
-  namespace :public do
-
-    resources :cart_items, only: [:index, :create]
-  end
-  namespace :public do
-
-  resources :items, only: [:index, :show,]
-
-  end
-  namespace :public do
-    get 'homes/top'
     get 'homes/about'
+
+    resources :addresses, only:[:index, :edit, :show, :update, :destroy]
+
+    get "/orders/complete" => "orders#complete"
+    resources :orders, only: [:new, :confirm, :complere, :create,:index, :show]
+    post "/orders/confirm" => "orders#confirm"
+    
+
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete "/cart_item_destroy_all" => "cart_items#destroy_all", as: "destroy_all"
+
+    resources :items, only: [:index, :show,]
+
+    resources :customers, only: [:index, :new, :show, :edit, :create, :update]
+    
+
+    get "customers/show" => "customers#show", as: "my_page"
+
   end
+
   # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {

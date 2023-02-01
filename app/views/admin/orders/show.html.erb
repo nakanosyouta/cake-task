@@ -1,22 +1,18 @@
 <div>
   <h1>注文履歴詳細</h1>
-
-  <h2>注文情報</h2>
-  <p>注文日</p>
+  <h3>購入者</h3>
+  <span><%= @order.name %></span>
+  
+  <h3>注文日</h3>
   <span><%= @order.created_at %></span>
-
-  <p>お届け先</p>
-  <span><%= @order.address_display %></span>
-
-  <p>支払い方法</p>
+  
+  <h3>支払い方法</h3>
   <span><%= @order.payment_method_i18n %></span>
-
-  <h2>注文内容</h2>
-
+  
   <div>
   <table>
   <thead>
-      <th>商品</th>
+      <th>商品名</th>
       <th>単価</th>
       <th>個数</th>
       <th>小計</th>
@@ -36,12 +32,9 @@
     <% end %>
   </tbody>
   </table>
-
-</div>
-
-<h2>請求詳細</h2>
-
-<div>
+  
+  
+  <div>
   <table>
   <thead>
       <th>商品小計</th>
@@ -61,5 +54,6 @@
   </table>
 
 </div>
-
+  
+  
 </div>

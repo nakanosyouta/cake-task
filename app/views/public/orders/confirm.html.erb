@@ -1,2 +1,57 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div>
+  <h1>注文情報確認</h1>
+
+<% @total = 0 %>
+  <% @cart_items.each do |cart_item| %>
+  <p>商品名</p>
+   <span><%= cart_item.item.name %></span>
+
+  <p>単価</p>
+  <span><%= cart_item.item.porice %></span>
+
+
+  <p>個数</p>
+  <span><%= cart_item.amouunt %></span>
+
+  <p>小計</p>
+  <%= cart_item.subtotal%>
+  <% @total += cart_item.subtotal %>
+ <% end %>
+
+
+<div>
+  <table>
+  <thead>
+      <th>送料</th>
+      <th>商品合計</th>
+      <th>請求金額</th>
+  </thead>
+  <tbody>
+      <tr>
+          <td><%= @order.shipping_cost %></td>
+
+          <td><%= @total %></td>
+
+          <td><%= @order.shipping_cost + @total %></td>
+
+      </tr>
+  </tbody>
+  </table>
+
+</div>
+
+ <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+
+  <h2>支払い方法</h2>
+  <%= @order.payment_method_i18n %>
+
+  <h2>お届け先</h2>
+  <%= @order.address_display %>
+
+            <%= f.hidden_field :payment_method, value: @order.payment_method %>
+            <%= f.hidden_field :name, value: @order.name %>
+            <%= f.hidden_field :address, value: @order.address %>
+            <%= f.hidden_field :postal_code, value: @order.postal_code %>
+            <%= f.submit "注文を確定する" %>
+        <% end %>
+</div>

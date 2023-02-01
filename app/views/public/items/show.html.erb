@@ -5,15 +5,14 @@
 
  <p>商品名</p>
   <span><%= @item.name %></span>
-
  <p>商品説明</p>
   <span><%= @item.introduction %></span>
 
  <p>価格</p>
   <span><%= @item.porice %></span>
   
- <%= form_with model: @cart_item,url: public_cart_items_path do |f| %>
-  <%= f.select :amouunt, *[1..3] %>
+ <%= form_with model: @cart_item,url: cart_items_path do |f| %>
+  <%= f.select :amouunt, *[1..5] %>
   <%= f.hidden_field:item_id, :value => @item.id %>
   <%= f.submit 'カート' %>
  <% end %>
