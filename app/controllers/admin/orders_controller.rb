@@ -1,13 +1,17 @@
 class Admin::OrdersController < ApplicationController
   def new
-    @order = Order.new
-    @addresses = current_customer.addresses.all
+
   end
-  
-  def indx
+
+  def index
     @orders = Order.all
   end
-  
+
+  def edit
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders
+  end
+
   def show
    @order = Order.find(params[:id])
    @order_details = OrderDetail.find(params[:id])

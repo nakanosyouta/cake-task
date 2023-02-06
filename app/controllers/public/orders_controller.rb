@@ -44,7 +44,7 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @total = 0
     @order.shipping_cost = 800
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
       @total += cart_item.subtotal
     end
@@ -55,7 +55,7 @@ class Public::OrdersController < ApplicationController
       @order_details = OrderDetail.new
       @order_details.item_id = cart_item.item_id
       @order_details.amount = cart_item.amouunt
-      @order_details.price = (cart_item.item.porice*1.08).floor
+      @order_details.price = (cart_item.item.porice*1.1).floor
       @order_details.order_id = @order.id
       @order_details.save
     end
@@ -70,6 +70,7 @@ class Public::OrdersController < ApplicationController
   def show
    @order = Order.find(params[:id])
    @order_details = OrderDetail.find(params[:id])
+   
   end
 
   private

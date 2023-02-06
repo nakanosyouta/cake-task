@@ -1,6 +1,6 @@
 <div>
   <h1>商品一覧</h1>
-
+  <p><%= link_to "商品新規登録", new_admin_item_path %></p>
   <p><% @items.each do |item| %></p>
   <%= image_tag item.get_image %>
   <p>商品名</p>

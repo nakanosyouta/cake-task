@@ -6,18 +6,31 @@
       <th>購入日時</th>
       <th>購入者</th>
       <th>注文個数</th>
+      <th>表示する</th>
   </thead>
   <tbody>
     <% @orders.each do |order| %>
       <tr>
         <td><%= order.created_at %></td>
+
+        <td>
+          <%= link_to edit_admin_order_path(order.customer_id) do %>
+          <%= order.name %>
+          <% end %>
+        </td>
+
+        <td>
+          <% total = 0 %>
+          <% order.order_details.each do |order_detail| %>
+          <% total += order_detail.amount %>
+          <% end %>
+          <%= total %>
+        </td>
         
-        <td><%= order.name %></td>
-        
-        <td><%= order.amount %></td>
-        
+        <td><%= link_to "表示させる", admin_order_path(order.id) %></td>
       </tr>
     <% end %>
   </tbody>
   </table>
+  </div>
 </div>

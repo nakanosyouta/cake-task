@@ -6,7 +6,7 @@
   <span><%= @order.created_at %></span>
 
   <p>お届け先</p>
-  <span><%= @order.address_display %></span>
+  <span><%= @order.address_display%></span>
 
   <p>支払い方法</p>
   <span><%= @order.payment_method_i18n %></span>
@@ -26,7 +26,7 @@
       <tr>
         <td><%= order_detail.item.name %></td>
 
-        <td><%= order_detail.item.porice %></td>
+        <td><%= order_detail.item %></td>
 
         <td><%= order_detail.amount %></td>
 

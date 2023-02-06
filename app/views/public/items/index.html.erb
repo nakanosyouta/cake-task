@@ -1,9 +1,8 @@
 <div>
   <h1>商品一覧</h1>
   <% @item.each do |item| %>
-  <p>写真</p>
   <%= link_to item_path(item.id) do %>
-  <span><%= item.id %></span>
+  <p><%= image_tag item.get_image %></p>
   <% end %>
   <p>商品名</p>
    <span><%= item.name %></span>
@@ -13,6 +12,7 @@
    
   <p>価格</p>
    <span><%= item.porice %></span>
+   <h3>--------------</h3>
    
   <% end %>
   

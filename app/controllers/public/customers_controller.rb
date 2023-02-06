@@ -1,12 +1,20 @@
 class Public::CustomersController < ApplicationController
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
-  
+
   def edit
     @customer = Customer.find(params[:id])
   end
-  
+
+  def withdraw
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+
+    redirect_to root_path
+  end
+
   def update
     @customer = Customer.find(params[:id])
     if  @customer.update(customer_params)
@@ -15,8 +23,9 @@ class Public::CustomersController < ApplicationController
        render :show
     end
   end
-  
+
   def unsubscribe
+
   end
 
   private
@@ -24,5 +33,5 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :addess, :telephone_number)
   end
-  
+
 end

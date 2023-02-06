@@ -1,0 +1,26 @@
+<div>
+  <h1><%= @customer.last_name %>の注文履歴</h1>
+  <div>
+    <table>
+      <thead>
+        <th>購入日時</th>
+        <th>注文個数</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <%  @orders.each do |order| %>
+        <tr>
+        <td><%= order.created_at %></td>
+        <td>
+          <% total = 0 %>
+          <% order.order_details.each do |order_detail| %>
+          <% total += order_detail.amount %>
+          <% end %>
+          <%= total %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

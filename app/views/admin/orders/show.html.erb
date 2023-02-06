@@ -6,6 +6,9 @@
   <h3>注文日</h3>
   <span><%= @order.created_at %></span>
   
+  <h3>お届け先</h3>
+  <span><%= @order.address_display%></span>
+  
   <h3>支払い方法</h3>
   <span><%= @order.payment_method_i18n %></span>
   

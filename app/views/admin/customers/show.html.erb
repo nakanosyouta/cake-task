@@ -2,30 +2,30 @@
   <h1>会員詳細</h1>
   <p>会員ID</p>
   <span><%= @customer.id %></span>
-  
+
   <p>名前</p>
   <span><%= @customer.last_name %></span>
   <span><%= @customer.first_name %></span>
-  
+
   <p>フリガナ</p>
   <span><%= @customer.last_name_kana %></span>
   <span><%= @customer.first_name_kana %></span>
-  
+
   <p>郵便番号</p>
   <span><%= @customer.postal_code %></span>
-  
+
   <p>住所</p>
   <span><%= @customer.addess %></span>
-  
+
   <p>電話番号</p>
   <span><%= @customer.telephone_number %></span>
-  
+
   <p>メールアドレス</p>
   <span><%= @customer.email %></span>
-  
+
   <p>会員ステータス</p>
-  <span><%= @customer.id %></span>
-  
+  <span><%= @customer.is_deleted ? "退会" : "入会" %></span>
+
   <%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
   <%= link_to "注文履歴一覧を見る", edit_admin_customer_path(@customer.id) %>
 </div>
