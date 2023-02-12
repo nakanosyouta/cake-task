@@ -26,11 +26,11 @@
       <tr>
         <td><%= order_detail.item.name %></td>
 
-        <td><%= order_detail.item %></td>
+        <td><%= (order_detail.item.porice * 1.1).floor %></td>
 
         <td><%= order_detail.amount %></td>
 
-        <td><%= order_detail.price %></td>
+        <td><%= (order_detail.price * order_detail.amount).floor %></td>
 
       </tr>
     <% end %>

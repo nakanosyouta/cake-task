@@ -2,21 +2,21 @@
   <h1>注文履歴詳細</h1>
   <h3>購入者</h3>
   <span><%= @order.name %></span>
-  
+
   <h3>注文日</h3>
   <span><%= @order.created_at %></span>
-  
+
   <h3>お届け先</h3>
   <span><%= @order.address_display%></span>
-  
+
   <h3>支払い方法</h3>
   <span><%= @order.payment_method_i18n %></span>
-  
+
   <div>
   <table>
   <thead>
       <th>商品名</th>
-      <th>単価</th>
+      <th>単価（税込）</th>
       <th>個数</th>
       <th>小計</th>
   </thead>
@@ -25,7 +25,7 @@
       <tr>
         <td><%= order_detail.item.name %></td>
 
-        <td><%= order_detail.item.porice %></td>
+        <td><%= (order_detail.item.porice * 1.1).floor %></td>
 
         <td><%= order_detail.amount %></td>
 
@@ -35,8 +35,8 @@
     <% end %>
   </tbody>
   </table>
-  
-  
+
+
   <div>
   <table>
   <thead>
@@ -57,6 +57,6 @@
   </table>
 
 </div>
-  
-  
+
+
 </div>

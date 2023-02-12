@@ -6,12 +6,12 @@
   <p>商品名</p>
    <span><%= cart_item.item.name %></span>
 
-  <p>単価</p>
-  <span><%= cart_item.item. %></span>
+  <p>単価(税込)</p>
+  <span><%= (cart_item.item.porice * 1.1).floor %></span>
 
 
   <p>個数</p>
-  <span><%= cart_item.item.porice %></span>
+  <span><%= cart_item.amouunt %></span>
 
   <p>小計</p>
   <%= cart_item.subtotal%>

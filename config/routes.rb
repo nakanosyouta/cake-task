@@ -44,7 +44,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items, only: [:index, :show,]
 
     patch "customers/withdraw" => "customers#withdraw"
-    resources :customers, only: [:index, :new, :edit, :create, :update]
+    get "customers/information/edit" => "customers#edit"
+    patch "customers/update" => "customers#update"
 
     get "customers/unsubscribe" => "customers#unsubscribe"
     get "customers/show" => "customers#show", as: "my_page"
